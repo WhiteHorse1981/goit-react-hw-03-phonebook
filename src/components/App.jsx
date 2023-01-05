@@ -9,11 +9,7 @@ const LOCAL_KEY = 'users';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-    ],
+    contacts: [],
     filter: '',
   };
 
@@ -32,10 +28,10 @@ export class App extends Component {
   }
 
   handleChange = e => {
-    this.setState( {filter: e.target.value});
+    this.setState({ filter: e.target.value });
   };
 
-  handleSubmit = ({name, number}) => {
+  handleSubmit = ({ name, number }) => {
     const id = nanoid();
     const contactsLists = [...this.state.contacts];
 
@@ -50,7 +46,9 @@ export class App extends Component {
 
   handleDelete = elementDeleteId => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== elementDeleteId),
+      contacts: prevState.contacts.filter(
+        contact => contact.id !== elementDeleteId
+      ),
     }));
   };
 
